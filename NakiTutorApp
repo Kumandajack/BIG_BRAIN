@@ -1,0 +1,55 @@
+tutors = ["Mr DAKAR","Mrs JADE","Mr DAWAI","Mrs SMITH"]
+subs = ["maths literacy","life sciences"]
+grades = [10,11,12]
+prices = [200, 300,500]
+#LISTS WITH ITERABLE DATA
+learner_name= input("Enter your Name and Surname: ")
+learner_subject = input("Maths Literacy or Life Sciences? Type your answer: ").lower()
+learner_grade = input("Enter your Grade: ")
+print(f"\n{learner_name}!  {learner_subject}! for Grade {learner_grade}!") #f string prints user input easily
+#LEARNER INPUT
+#FINDING THE RIGHT PRICE
+print("\n HERE IS YOUR TOTAL COST:")
+if "12" in learner_grade:
+	if "life sciences" in learner_subject:
+		print(f"{subs[1]} for Grade 12 = R{prices[2]}.00")
+	elif "math" in learner_subject:
+		print(f"{subs[0]} for Grade 12 = R{prices[2]}.00")
+	else:
+		print("Invalid input!")
+elif "11" in learner_grade:
+	if "life sciences" in learner_subject:
+		print(f"{subs[1]} for Grade 11 = R{prices[1]}.00")
+	elif "math" in learner_subject:
+		print(f"{subs[0]} for Grade 11 = R{prices[2]}")
+	else:
+		print("Invalid input!")
+elif "10" in learner_grade:
+	if "life sciences" in learner_subject:
+		print(f"{subs[1]} for Grade 10 = R{prices[1]}.00")
+	elif "math" in learner_subject:
+		print(f"{subs[0]} for Grade 10 = R{prices[0]}.00")
+	else:
+		print("Invalid input!")
+else:
+	print(f"I am sorry {learner_name}, I did not get that")
+print("\n◇◇◇◇◇◇YOUR TUTORS◇◇◇◇◇◇")
+print("\nEMAILS")
+for tutor in tutors:
+	emails = tutor.lower().replace("mr ","").replace("mrs ","") +"@naki.com"
+	print(emails)
+
+if "math" in learner_subject:
+	if "12" in learner_grade or "11" in learner_grade:
+		assigned_tutor = tutors[0]
+	elif "10" in learner_grade:
+		assigned_tutor = tutors[1]
+	else:
+		print("Invalid input")
+elif "life sciences" in learner_subject:
+	if "12" in learner_grade or "11" in learner_grade:
+		assigned_tutor = tutors[2]
+	elif "10" in learner_grade:
+		assigned_tutor = tutors[3]
+print(f"\nWELCOME! You are assigned to {assigned_tutor} class. Make sure you send an email containing proof of payment")
+print("\n ALL THE BEST")
