@@ -1,0 +1,27 @@
+user ={}
+user["email"] = []
+user["pin"] = []
+def register():
+	name = input("ENTER EMAIL: ").lower()
+	user["email"].append(name)
+	pincode = int(input("ENTER PIN: "))
+	user["pin"].append(pincode)
+	with open("Naki_learner_register.txt","a") as f:
+		f.write(f"{name}, {pincode}\n")
+	return name,pincode
+name,pincode = register()
+print("ACCOUNT CREATED! PRESS ENTER TO PROCEED: ")
+x = input()
+def login():
+	attempts = 3
+	while attempts >0:
+		username = input("ENTER EMAIL: ").lower()
+		pin_num = int(input("ENTER PIN: "))
+		if username == name and pin_num == pincode:
+			print("WELCOME. WAIT A MOMENT AS WE PREPARE YOUR RESOURCES\n")
+			break
+		else:
+			print("WRONG INPUT")
+			attempts -=1
+			print(f"YOU HAVE {attempts} attempts remaining")	
+login()
