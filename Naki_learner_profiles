@@ -1,3 +1,4 @@
+import time
 user ={}
 user["email"] = []
 user["pin"] = []
@@ -25,3 +26,5 @@ def login():
 			attempts -=1
 			print(f"YOU HAVE {attempts} attempts remaining")	
 login()
+time.sleep(3)
+print("\nALL READY! SEND AN EMAIL TO YOUR ASSIGNED TUTOR")
