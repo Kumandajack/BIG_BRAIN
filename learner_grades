@@ -1,0 +1,26 @@
+import time
+def print_grades():
+	print("\nINDICATE YOUR GRADE BELOW")
+	print("\n1. GRADE 12")
+	print("\n2. GRADE 11")
+	print("\n3. GRADE 10")
+print_grades()
+grade = 0
+while grade not in [12,11,10]:
+	try:
+		grade = int(input("\nGRADE: "))
+		if grade == 12:
+			print("WELCOME TO MATRIC")
+			break
+		elif grade == 11:
+			print("WELCOME TO PRE-MATRIC")
+			break
+		elif grade == 10:
+			print("WELCOME TO FOUNDATION BASE")
+			break
+		else:
+			print("INVALID GRADE")
+	except ValueError:
+		print("ENTER DIGITS ONLY, NO LETTERS OR SPECIAL CHARACTERS")
+time.sleep(2)
+print("ALMOST DONE! THANK YOU FOR YOUR PATIENCE!")
