@@ -1,0 +1,112 @@
+def display_head():
+	print("\n°•○○•°°•☆☆•°°•○○N-A-K-I°°•☆☆•°°•°°•○○°\n")
+	print("\nPlease fill in the form below in just 3 steps\n")
+
+	
+#Function that asks for learner subject
+def pick_sub():
+	while True:
+		enter = input("\nChoose Your Subject(Maths Lit or Life Sciences): ").title()
+		if "Math" in enter:
+			print("\nYour Maths Lit resources are loading...")
+			return "Maths Lit"
+		elif "Life" in enter:
+			print("\nYour Life Sciences resources are loading...")
+			return "Life Sciences"
+		else:
+			print("\nSorry, we only offer Maths Lit and Life Sciences lessons. Please try again...")
+			
+			
+			
+#Function that asks for learner grade
+def pick_grade():
+	while True:
+		try:
+			grade = int(input("\nEnter your grade: "))
+			if grade == 12:
+				print("\nWelcome to Matric.")
+				return grade
+			elif grade == 11:
+				print("\nWelcome to Pre-Matric")
+				return grade
+			elif grade == 10:
+				print("\nWelcome to FET")
+				return grade
+			else:
+				print("\nWe only offer lessons for grades 10,11, & 12")
+		except ValueError:
+			print("\nEnter only the grade number, no texts or special characters")
+			
+			
+#Function that asks for learner names
+def usernames():
+	while True:
+		username = input("\nEnter Name and Surname: ").title()
+		if username.strip() == "":
+			print("Invalid input. Please try again")
+		else:
+			print(" ")
+			break
+	return username
+	
+def choose_tutor():
+	print("\nChoose Your Preferred Tutor below\n")
+	tutors = ["Mr DAKAR","Mrs SMITH","Mrs JADE","Mr DAWAI"]
+	while True:
+		for tutor,name in enumerate(tutors,1):
+			print (f"\n{tutor}. {name}")
+		try:
+			choose = int(input("\nEnter Option: "))
+			if choose == 1:
+				print (f"\n☆☆☆Welcome to {tutors[0]}'s class☆☆☆")
+				return tutors[choose-1]
+			elif choose ==2:
+				print(f"\n••●••Welcome to {tutors[1]}'s class••●••")
+				return tutors[choose - 1]
+			elif choose == 3:
+				print(f"\n♤♤♤Welcome to {tutors[2]}'s class♤♤♤")
+				return tutors[choose - 1]
+			elif choose == 4:
+				print(f"\n■□■□Welcome to {tutors[3]}'s class■□■□")
+				return tutors[choose - 1]
+			else:
+				print("\nInvalid Input. Please Try Again...")
+		except ValueError:
+			print("\nInvalid Number. Do not enter any letters or special characters.Do not type the name of the tutor, just pick their number. ")
+
+def operation(func):
+	learner = func()
+	return learner
+	
+	
+operation(display_head)
+names = operation(usernames)
+print(f"Welcome To Naki Tutoring {names}")
+grades = operation(pick_grade)
+subjects = operation(pick_sub)
+chosen_tutor= operation(choose_tutor)
+print(f""" Your registration process is complete. Your details are as follows:
+NAME--{names}
+GRADE--{grades}
+SUBJECT--{subjects}
+TUTOR--{chosen_tutor}
+
+Here is your automatic learner email:
+""" )
+
+def create_email():
+	email = names.lower().replace(" ","") + "@naki.com"
+	print(email)
+	return  email
+
+email_address = create_email()
+	
+
+
+with open("naki_tutoring_learner_input_register.txt","a") as f:
+	f.write(f"""
+	Name - {names}
+	Grade - {grades}
+	Subject - {subjects}
+	Tutor - {chosen_tutor}
+	Email - {email_address}\n""")
